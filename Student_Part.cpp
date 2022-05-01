@@ -94,7 +94,7 @@ void Ch_Student(){
         fileRegister.close();
     }
     else if(Reg_sign == 2){
-        /// sign in
+        // sign in
         setcolor(2);
         int id;     char pass[20];
         for (int i = 0; i < 19; i++) pass[i] = '\0';
@@ -137,7 +137,7 @@ void Ch_Student(){
         Student_profile_menu();
         setcolor(6);
         cin >> Stu_choice;
-        // 5- logout
+        // logout
         if (Stu_choice == 5) {
             return Returning();
         }
@@ -169,7 +169,7 @@ void Ch_Student(){
             // Add a new course
             char anotherCourse;
             do {
-                /// List Courses
+                // List Courses
                 setcolor(2);
                 int course_ch;
                 print(15, '\n');
@@ -211,8 +211,8 @@ void Ch_Student(){
                 setcolor(2);
                 print(25, ' ') << "Choice : ";
                 setcolor(6);    cin >> course_ch;
-                /// SEARCHING FOR THE CHOOSEN COURSE
-                /// ADD THE COURSE FOR THE STUDENT AND ADD THIS STUDENT FOR THE TEACHER OF THE COURSE
+                // SEARCHING FOR THE CHOOSEN COURSE
+                // ADD THE COURSE FOR THE STUDENT AND ADD THIS STUDENT FOR THE TEACHER OF THE COURSE
                 fstream fileTeachers2;
                 fileTeachers2.open("Teachers.txt", ios::in | ios::out);
                 fileTeachers2.read((char*)&t1, sizeof(t1));
@@ -230,7 +230,7 @@ void Ch_Student(){
                     fileTeachers2.read((char*)&t1, sizeof(t1));
                 }
                 fileTeachers2.close();
-                /// PUT THE CHOOSEN COURSE IN YOUR RECORD
+                // PUT THE CHOOSEN COURSE IN YOUR RECORD
                 Student s2;
                 fstream studentFileToUpdate;
                 studentFileToUpdate.open("Student.txt", ios::in | ios::out);
@@ -263,7 +263,7 @@ void Ch_Student(){
         }
         else if(Stu_choice == 3){
             setcolor(2);
-            /// Show my courses
+            // Show my courses
             print(15, '\n');
             print(40, ' ') << "Student's Courses Page : \n\n";
             print(40, ' ') << string(20, '-') << "\n\n";
