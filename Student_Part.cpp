@@ -88,7 +88,7 @@ void Ch_Student(){
         thisStudent.id = students_ids.top();
         students_ids.pop();
         Beep(500,500);
-        print(25, ' ') << "Registration Completed ... Your ID is: " << thisStudent.id << "\n";
+        print(25, ' ') << "\nRegistration Completed ... Your ID is: " << thisStudent.id << "\n";
         press_any();
         fileRegister.write((char*) &thisStudent, sizeof(thisStudent));
         fileRegister.close();
@@ -128,7 +128,8 @@ void Ch_Student(){
         setcolor(12);
         Beep(500,500);
 
-        cout << "\a" <<  string(25, ' ') << "The ID or Password is wrong!!!\n";
+        cout <<  string(25, ' ') << "\aThe ID or the Password is wrong, Please try Aagin!\n";
+        press_any();
         return Returning();
     }
     // student singed in menu
@@ -237,7 +238,7 @@ void Ch_Student(){
                 if (!studentFileToUpdate.is_open()) {
                     setcolor(12);
                     Beep(500,500);
-                    cout << "\aError When open student.txt file to add course...\n";
+                    print(25, ' ') << "\aError here ... There is no Studnt!, Please Read the Readme.txt file and try again\n";
                     getch();
                     return ;
                 }

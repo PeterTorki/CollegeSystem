@@ -46,10 +46,11 @@ void Ch_Teacher(){
 
         bool found = 0;
         Teacher t1;
-        fstream teacherFile;
+        fstream teacherFile;    
         teacherFile.open("Teachers.txt", ios::in);
         if (!teacherFile.is_open()) {
-            cout << "\aerror here, Please first create a student from admin screen";
+            cout << "\n";
+            print(25, ' ') << "\aError here ... There is no Teachers!, Please Read the Readme.txt file and try again\n";
             press_any();
             Returning();
             return ;
@@ -71,7 +72,8 @@ void Ch_Teacher(){
             print(15, ' ');
             setcolor(12);
             Beep(500,500);
-            cout <<  string(25, ' ') << "The ID or Password is wrong!!!\n";
+            cout <<  string(25, ' ') << "\aThe ID or the Password is wrong, Please try Aagin!\n";
+            press_any();
             return Returning();
         }
         do{
@@ -126,14 +128,15 @@ void Ch_Teacher(){
 
             else if(Teac_choice == 2){
                 // Show my students
-               // print(15, ' ');
+               
                 setcolor(1);
                 print(40, ' ') << "Teacher Page : \n\n";
                 print(40, ' ') << string(20, '-') << "\n";
                 if (thisTeacher.NumOfStudents == -1) {
                     setcolor(5);
                     Beep(500,500);
-                    cout << "NO STudents here\n";
+                    cout << "\n";
+                    print(35, ' ') << "NO STudents here\n";
                     getch();
                 }
                 setcolor(2);
@@ -145,7 +148,7 @@ void Ch_Teacher(){
                     print(35, ' ') << thisTeacher.Tec_Stu[i].id << "\t" << thisTeacher.Tec_Stu[i].name << "\t" << thisTeacher.Tec_Stu[i].age << endl;
                 }
                 setcolor(5);
-                print(35, ' ') << "Press Any key to return... ";
+                press_any();
                 _getch();
                 Directing();
             }

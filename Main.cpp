@@ -18,7 +18,7 @@ int main(){
         cout << string(50, ' ') <<char(201);      for(int i=0; i< 21; i++){cout << char(205);}      cout << char(187) << endl;
         cout << string(50, ' ') <<char(186) << "    College System   " << char(186) << endl;
         cout << string(50, ' ') <<char(200);      for(int i=0; i<21 ; i++){cout << char(205);}      cout << char(188) << endl;
-
+        
         cout << string(3, '\n');
 
         cout << string(30, ' ') << "   Choose who are you: \n\n";

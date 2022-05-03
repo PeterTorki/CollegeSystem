@@ -14,7 +14,7 @@ void ShowAllTeacher(){
         setcolor(12);
         Beep(500,500);
 
-        cout << "\aFile cannot be oppened :), Please Create Student First\n";
+        print(25, ' ') << "\aError here ... There is no Teacher!, Please Read the Readme.txt file and try again\n";
         return;
     }
 
@@ -38,9 +38,11 @@ void ShowAllTeacher(){
         inFile.read((char*)&T, sizeof(T));
     }
     if(!exist){
-        print(25, ' ') << "\aNo Teachers found"<< "\n\n";
+        cout << "\n";
+        print(25, ' ') << "\aNo Teachers found"<< "\n";
     }
     press_any();
+    cout << "\n";
     Returning();
 }
 
@@ -59,8 +61,10 @@ void SearchTeacher(){
     {
         setcolor(12);
         Beep(500,500);
-        cout << "\aFile cannot be oppened :)\n";
-        return;
+        print(25, ' ') << "\aError here ... There is no Teacher to search for!, Please Read the Readme.txt file and try again\n";
+        press_any();
+        cout << "\n";
+        Returning();
     }
     bool exist = false;
     inFile.read((char*)&T, sizeof(T));
@@ -85,6 +89,7 @@ void SearchTeacher(){
         print(25, ' ') << "\aThe ID you entered does not exist :)\n";
     }
     press_any();
+    cout << "\n";
     Returning();
     //Last Edit
     inFile.close();
@@ -135,7 +140,8 @@ void Add_Teacher(){
 void Remove_Teacher(){
     int tea_id;
     setcolor(2);
-    cout << "Enter Teacher's ID to Delete: ";
+    print(15, '\n');
+    print(35, ' ') << "Enter Teacher's ID to Delete: ";
     setcolor(6);
     cin >> tea_id;
     Teacher T;
@@ -145,8 +151,10 @@ void Remove_Teacher(){
     if(!inFile.is_open())
     {
         setcolor(12);
-        cout << "\aFile cannot be oppend :)\n";
-        return;
+        print(25, ' ') << "\aError here ... There is no Teacher to Remove!, Please Read the Readme.txt file and try again\n";
+        press_any();
+        cout << "\n";
+        Returning();
     }
 
     bool exist = false;
@@ -195,12 +203,19 @@ void Remove_Teacher(){
         StudentFile.close();
         Temp.close();
         remove("Student.txt");
-        rename("Temp.txt", "Student.txt");
+        rename("Temp.txt", "Student.txt");    
+        setcolor(1);
+        Beep(500,500);
+        cout << "\n";
+        print(25, ' ') << "\aRemoved Successfully :) \n";
     }
-    setcolor(1);
-    Beep(500,500);
-
-    print(25, ' ') << "\aRemoved Successfully :) \n";
+    else{ 
+        cout << "\n";
+        print(25, ' ') << "\aTeacher not found, Please Try again! \n";
+        press_any();
+        cout << "\n";
+        return Returning();
+    }
 }
 /*
     THIS IS THE NEWEST VERSION OF Edit_Teacher
@@ -213,14 +228,17 @@ void Edit_Teacher(){
     if(!inFile.is_open()){
         setcolor(12);
         Beep(500,500);
-        cout << "\aFile cannot be oppend : )\n";
+        print(25, ' ') << "\aError here ... There is no Teacher to Edit!, Please Read the Readme.txt file and try again\n";
+        press_any();
+        cout << "\n";
+        Returning();
     }
 
     setcolor(2);
     int tea_id;
     print(15, '\n');
 
-    print(35, ' ') << "Enter a Teacher's id to search for : ";
+    print(25, ' ') << "Enter a Teacher's id to search for : ";
     setcolor(6);
     cin >> tea_id;
     bool exist = false;
@@ -290,10 +308,14 @@ void Edit_Teacher(){
     }
     inFile.close();
     if(!exist){
-        setcolor(2);
+        setcolor(12);
         Beep(500,500);
+        print(35, ' ') << "The Id You Entered Does Not Exist :) \n";
+        press_any();
+        cout << "\n";
+        return Returning();
+        setcolor(2);
 
-        cout << "The Id You Entered Does Not Exist :) \n";
     }
     else {
         // To edit in files
@@ -459,24 +481,39 @@ void Ch_Admin(){
                             ifstream file;
                             file.open("Student.txt", ios::in);
                             setcolor(12);
-                            if(!file.is_open()) cout<<"\afile can't be opend";
+                            if(!file.is_open()){ 
+                                print(15, '\n');
+                                print(25, ' ') << "\aError here ... There is no Student!, Please Read the Readme.txt file and try again\n";
+                                press_any();
+                                cout << "\n";
+                                Returning();
+                            }
 
                             else{
                                 setcolor(2);
                                 print(15, '\n');
                                 print(70, ' ') <<"All Students\n"; // Last edit
                                 print(66, ' ');
-                                print(20, '-') << "\n";
-                                print(35, ' ') <<"ID\t\tPassword\tName\t\tAge\t\tLevel\t\tDepartment\n";
-                                print(35, ' ') << "--\t\t--------\t----\t\t---\t\t-----\t\t----------\n";
-
+                                print(20, '-') << "\n\n";
+                                bool printed = 1;
                                 file.read((char*) &s1,sizeof(s1));
                                 while (!file.eof())
                                 {
                                     setcolor(6);
-                                    print(35, ' ') << s1.id<<"\t\t" << s1.password << "\t\t" << s1.name<<"\t\t"<<s1.age<<"\t\t"<<s1.level<<"\t\t"
-                                        <<s1.Dep<<"\n";
+                                    if(printed){    
+                                        print(35, ' ') <<"ID\t\tPassword\tName\t\tAge\t\tLevel\t\tDepartment\n";
+                                        print(35, ' ') << "--\t\t--------\t----\t\t---\t\t-----\t\t----------\n";
+                                    }
+                                    print(35, ' ') << s1.id<<"\t\t" << s1.password << "\t\t" << s1.name << "\t\t" << s1.age << "\t\t" << s1.level << "\t\t" <<s1.Dep<<"\n", printed = 0;
                                     file.read((char*) &s1,sizeof(s1));
+                                }
+                                if(printed){  
+                                    setcolor(12);
+                                    print(25, ' ') << "\aError here ... There is no Student to Search for!, Please Read the Readme.txt file and try again\n";
+                                    press_any();
+                                    cout << "\n";
+                                    Returning();
+                                    setcolor(6);
                                 }
                             }
                             press_any();
@@ -484,8 +521,9 @@ void Ch_Admin(){
                         }
                         else if(Ad_Stud_choice == 2)
                         {
-                             setcolor(2);
+                            setcolor(2);
                             int stu_id;
+                            print(15, '\n');
                             print(35, ' ') << "Enter the ID of the student to search for: ";
                              setcolor(6);
                             cin >> stu_id;
@@ -494,29 +532,34 @@ void Ch_Admin(){
                             ifstream inFile;
                             inFile.open("Student.txt", ios :: in);
                             if(!inFile.is_open()){
-                                 setcolor(6);
-                                return void(cout << "\aFile cannot be oppend");
+                                setcolor(6);
+                                print(25, ' ') << "\aError here ... There is no Student to Search for!, Please Read the Readme.txt file and try again\n";
                             }
                             bool exist = 0;
                             // Read first to ignore last deplicated objects
                             inFile.read((char*)&s1, sizeof(s1));
-                            print(15, '\n');
-                             setcolor(2);
-                            print(35, ' ')<<"ID\t\tPassword\tName\t\tAge\t\tLevel\t\tDepartment\n";
-                            print(35, ' ')<< "--\t\t--------\t----\t\t---\t\t-----\t\t----------\n";
+                            setcolor(2);
                             while (!inFile.eof()){  // While the file not ended
                                 if(s1.id == stu_id){
-                                     setcolor(6);
-                                    print(35, ' ') << s1.id<<"\t\t"<<s1.password<<"\t\t"<<s1.name<<"\t\t"<<s1.age<<"\t\t"<<s1.level<<"\t\t", exist = 1;
-                                    }
+                                    setcolor(6);
+                                    print(35, ' ')<<"ID\t\tPassword\tName\t\tAge\t\tLevel\t\tDepartment\n";
+                                    print(35, ' ')<< "--\t\t--------\t----\t\t---\t\t-----\t\t----------\n";
+                                    print(35, ' ') << s1.id << "\t\t" << s1.password << "\t\t" << s1.name << "\t\t " << s1.age << "\t\t " << s1.level << "" << "\t\t" << "\t\t" <<s1.Dep , exist = 1;
 
+                                }
                                 inFile.read((char*)&s1, sizeof(s1));
                             }
-                             setcolor(12);
-                            if(!exist && print(35, ' ')<<"\aNot found\n");
+                            setcolor(12);
+                            if(!exist && print(35, ' ') << "\aStudent not found, Please try again!\n");
                             inFile.close();
+                            cout << "\n";
                             press_any();
-                            Directing();
+                            cout << "\n";
+                            
+                            if(!exist)
+                                Returning();
+                            else 
+                                Directing();
                         }
                     else if(Ad_Stud_choice == 3)
                     {
@@ -651,6 +694,7 @@ void Ch_Admin(){
                         }
                         int stu_id;
                          setcolor(2);
+                        print(15, '\n');
                         print(35, ' ') << "Enter the ID of the student to Edit: ";
                          setcolor(6);
                         cin >> stu_id;
@@ -658,7 +702,6 @@ void Ch_Admin(){
                         inFile.read((char*)&s1, sizeof(s1));
                         while (!inFile.eof())
                         {
-
                             if(stu_id == s1.id)
                             {
                                  setcolor(2);
@@ -683,7 +726,7 @@ void Ch_Admin(){
                                 print(35, ' ') <<"ID\t\tPassword\tName\t\tAge\t\tLevel\t\tDepartment\n";
                                 print(35, ' ') << "--\t\t--------\t----\t\t---\t\t-----\t\t----------\n";
                                  setcolor(6);
-                                print(35, ' ') <<s1.id<<"\t\t"<<s1.password<<"\t\t"<<s1.name<<"\t\t"<<s1.age<<"\t\t"<<s1.level<<"\t\t", exist = 1;
+                                print(35, ' ') <<s1.id<<"\t\t"<<s1.password<<"\t\t"<<s1.name<<"\t\t"<<s1.age<<"\t\t"<<s1.level<<"\t\t" << s1.Dep, exist = 1;
                                 exist = 1;
                                 break;
                             }
@@ -716,16 +759,10 @@ void Ch_Admin(){
                         Directing();
                     }
 
-                    else if(Ad_Stud_choice == 6){
+                    else if(Ad_Stud_choice >= 6){
                         Returning();
                     }
-                    else{
-                        setcolor(2);
-                        Beep(500,500);
-
-                        cout << string(25,'-') << "Please Enter [1:6] \n";
-                    }
-                    } while (Ad_Stud_choice > 6 || Ad_Stud_choice < 1);
+                    } while (1);
                 }
                 else if(Admin_choice >= 3)
                     break;
