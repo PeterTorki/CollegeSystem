@@ -227,7 +227,7 @@ void Ch_Teacher()
                         // TeacherUpdate.write((char *)&thisTeacher, sizeof(thisTeacher));
                         // break;
                     }
-                    Temp.write((char *)&t1, sizeof(t1));
+                    Temp.write((char *)&t2, sizeof(t2));
                     TeacherUpdate.read((char *)&t2, sizeof(t2));
                 }
                 TeacherUpdate.close();
