@@ -9,7 +9,7 @@ using namespace std;
 void Student_profile_menu()
 {
 
-    print(15, '\n');
+    print(0, '\n');
     setcolor(1);
     print(40, ' ') << "Student Page : \n\n";
     print(40, ' ') << string(20, '-') << "\n";
@@ -42,7 +42,7 @@ void Ch_Student()
 {
 
     int Reg_sign;
-    print(15, '\n');
+    print(0, '\n');
     setcolor(1);
     print(40, ' ') << "Student Page : \n\n";
     print(40, ' ') << string(20, '-') << "\n";
@@ -125,7 +125,7 @@ void Ch_Student()
         int id;
         char pass[20];
         for (int i = 0; i < 19; i++)    pass[i] = '\0';
-        print(15, '\n');
+        print(0, '\n');
         cout << string(25, ' ') << "Enter: \n\n";
         print(35, ' ') << "ID: ";
         setcolor(6);
@@ -154,7 +154,7 @@ void Ch_Student()
     Directing();
     if (!found)
     {
-        print(15, '\n');
+        print(0, '\n');
         setcolor(12);
         Beep(500, 500);
 
@@ -179,7 +179,7 @@ void Ch_Student()
         {
             setcolor(2);
             // Show my information
-            print(15, '\n');
+            print(0, '\n');
             print(40, ' ') << "Student Profile Page : \n\n";
             print(40, ' ') << string(20, '-') << "\n";
             print(35, ' ') << "Name: ";
@@ -208,7 +208,7 @@ void Ch_Student()
                 // List Courses
                 setcolor(2);
                 int course_ch;
-                print(15, '\n');
+                print(0, '\n');
                 print(40, ' ') << "Student Page : \n\n";
                 print(40, ' ') << string(20, '-') << "\n";
                 cout << string(25, ' ') << "Choose a course : \n\n";
@@ -318,7 +318,7 @@ void Ch_Student()
         {
             setcolor(2);
             // Show my courses
-            print(15, '\n');
+            print(0, '\n');
             print(40, ' ') << "Student's Courses Page : \n\n";
             print(40, ' ') << string(20, '-') << "\n\n";
             if (thisStudent.NumOfCourses == -1)
@@ -344,7 +344,7 @@ void Ch_Student()
         {
             setcolor(2);
             // Update password
-            print(15, '\n');
+            print(0, '\n');
             print(35, ' ') << "Enter the new Password: ";
             setcolor(6);
             set_Password(thisStudent.password);

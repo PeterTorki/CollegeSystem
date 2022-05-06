@@ -6,7 +6,7 @@
 #include <queue>
 #include <windows.h>
 #include <string.h>
-#define print(x, ch) cout << string(x, ch) 
+#define print(x, ch) cout << string(x + 20, ch) 
 using namespace std;
 void setcolor( unsigned char color )
 {
@@ -15,13 +15,32 @@ void setcolor( unsigned char color )
 
 void press_any() {
     setcolor(5);
-    cout << "\n" << string(35, ' ') << "Press any key to return back...";
+    cout << "\n" << string(55, ' ') << "Press any key to return back...";
     getch();
+}
+
+void print_logo(string s, int size = 50){
+        
+        cout << string(15, '\n');
+        print(size, ' ') << char(201);
+        for (int i = 0; i < s.size() + 10; i++)
+        {
+            cout << char(205);
+        }
+        cout << char(187) << endl;
+        print(size, ' ') << char(186) << "     " << s << ("     ") << char(186) << endl;
+        print(size, ' ') << char(200);
+        for (int i = 0; i < s.size() + 10; i++)
+        {
+            cout << char(205);
+        }
+        cout << char(188) << endl;
+        cout << string(3, '\n');
 }
 
 void Directing(){
     setcolor(6);
-    cout << "\n" << string(35, ' ') << "Redicrecting";
+    cout << "\n" << string(55, ' ') << "Redicrecting";
     Sleep(250); cout << "."; Sleep(250); cout << ".";
     Sleep(250); cout << "."; Sleep(250); cout << "!";
     system("CLS");
@@ -29,7 +48,7 @@ void Directing(){
 
 void Returning(){
     setcolor(4);
-    cout << "\n" << string(35, ' ') << "Returning";
+    cout << "\n" << string(55, ' ') << "Returning";
     Sleep(250); cout << "."; Sleep(250); cout << ".";
     Sleep(250); cout << "."; Sleep(250); cout << "!";
     Sleep(1000);

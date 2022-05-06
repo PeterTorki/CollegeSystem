@@ -11,27 +11,27 @@ void Ch_Teacher()
     int Reg_sign;
     // print(15, ' ');
     setcolor(1);
-    print(40, ' ') << "Teacher Login Page : \n\n";
-    print(40, ' ') << string(20, '-') << "\n";
+    print_logo("Teacher Login Page");
     setcolor(2);
-    cout << string(40, ' ') << char(201);
+    print(55, ' ') << char(201);
     for (int i = 0; i < 18; i++)
     {
         cout << char(205);
     }
     cout << char(187) << endl;
 
-    cout << string(40, ' ') << char(186) << "  1- Sign in      " << char(186) << endl;
+    print(55, ' ') << char(186) << "  1- Sign in      " << char(186) << endl;
     setcolor(12);
-    cout << string(40, ' ') << char(186) << "  2- Return Back  " << char(186) << endl;
-    cout << string(40, ' ') << char(200);
+    print(55, ' ') << char(186) << "  2- Return Back  " << char(186) << endl;
+    print(55, ' ') << char(200);
     for (int i = 0; i < 18; i++)
     {
         cout << char(205);
     }
     cout << char(188) << endl;
     setcolor(2);
-    print(30, ' ') << "choice : ";
+    cout << "\n";
+    print(50, ' ') << "Choice : ";
     setcolor(6);
     cin >> Reg_sign;
     Teacher thisTeacher;
@@ -43,8 +43,7 @@ void Ch_Teacher()
         for (int i = 0; i < 19; i++)    pass[i] = '\0';
         // print(15, ' ');
         setcolor(1);
-        print(40, ' ') << "Teacher Page : \n\n";
-        print(40, ' ') << string(20, '-') << "\n";
+        print_logo("Teacher Login Page");
         setcolor(2);
         print(25, ' ') << "Enter: \n\n";
         print(35, ' ') << "ID: ";
@@ -89,7 +88,7 @@ void Ch_Teacher()
             print(15, ' ');
             setcolor(12);
             Beep(500, 500);
-            cout << string(25, ' ') << "\aThe ID or the Password is wrong, Please try Aagin!\n";
+            print(25, ' ') << "\aThe ID or the Password is wrong, Please try Aagin!\n";
             press_any();
             return Returning();
         }
@@ -98,21 +97,20 @@ void Ch_Teacher()
             int Teac_choice;
             // print(15, ' ');
             setcolor(1);
-            print(40, ' ') << "Teacher Page : \n\n";
-            print(40, ' ') << string(20, '-') << "\n";
+            print_logo("Teacher Page");
             setcolor(2);
-            cout << string(40, ' ') << char(201);
+            print(40, ' ') << char(201);
             for (int i = 0; i < 21; i++)
             {
                 cout << char(205);
             }
             cout << char(187) << endl;
-            cout << string(40, ' ') << char(186) << "  1- Show my Info    " << char(186) << endl;
-            cout << string(40, ' ') << char(186) << "  2- Show my students" << char(186) << endl;
-            cout << string(40, ' ') << char(186) << "  3- Update password " << char(186) << endl;
+            print(40, ' ') << char(186) << "  1- Show my Info    " << char(186) << endl;
+            print(40, ' ') << char(186) << "  2- Show my students" << char(186) << endl;
+            print(40, ' ') << char(186) << "  3- Update password " << char(186) << endl;
             setcolor(12);
-            cout << string(40, ' ') << char(186) << "  4- Logout          " << char(186) << endl;
-            cout << string(40, ' ') << char(200);
+            print(40, ' ') << char(186) << "  4- Logout          " << char(186) << endl;
+            print(40, ' ') << char(200);
             for (int i = 0; i < 21; i++)
             {
                 cout << char(205);
@@ -167,8 +165,8 @@ void Ch_Teacher()
                     setcolor(5);
                     Beep(500, 500);
                     cout << "\n";
-                    print(35, ' ') << "NO STudents here\n";
-                    getch();
+                    print(35, ' ') << "NO STudents Reserved your Course yet.\n";
+                    break;
                 }
                 setcolor(2);
                 print(35, ' ') << "ID\t"
@@ -183,7 +181,6 @@ void Ch_Teacher()
                 }
                 setcolor(5);
                 press_any();
-                _getch();
                 Directing();
             }
 

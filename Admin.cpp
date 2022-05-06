@@ -7,22 +7,20 @@ using namespace std;
 
 void Print_Admin_Menu()
 {
-    print(15, '\n');
-    cout << string(40, ' ') << "Admin Page : \n\n";
-    cout << string(40, ' ') << string(20, '-') << "\n";
-    cout << string(25, ' ') << "Choose : \n\n";
-    cout << string(40, ' ') << char(201);
+    print_logo("Admin Page");
+    print(35, ' ') << "Choose : \n\n";
+    print(40, ' ') << char(201);
     for (int i = 0; i < 21; i++)
     {
         cout << char(205);
     }
     cout << char(187) << endl;
-    cout << string(40, ' ') << char(186) << "  1- Control Teacher " << char(186) << endl;
-    cout << string(40, ' ') << char(186) << "  2- Control Student " << char(186) << endl;
+    print(40, ' ') << char(186) << "  1- Control Teacher " << char(186) << endl;
+    print(40, ' ') << char(186) << "  2- Control Student " << char(186) << endl;
     setcolor(12);
-    cout << string(40, ' ') << char(186) << "  3- Logout          " << char(186) << endl;
+    print(40, ' ') << char(186) << "  3- Logout          " << char(186) << endl;
 
-    cout << string(40, ' ') << char(200);
+    print(40, ' ') << char(200);
     for (int i = 0; i < 21; i++)
     {
         cout << char(205);
@@ -36,25 +34,23 @@ void Print_Admin_Menu()
 void Print_Ctrl_Tec()
 {
     setcolor(2);
-    print(15, '\n');
-    cout << string(40, ' ') << "Admin Page (Contorl Teacher) : \n\n";
-    cout << string(40, ' ') << string(20, '-') << "\n";
-    cout << string(25, ' ') << "Choose : \n\n";
-    cout << string(40, ' ') << char(201);
+    print_logo("Admin Page (Teacher Control)");
+    print(25, ' ') << "Choose : \n\n";
+    print(40, ' ') << char(201);
     for (int i = 0; i < 23; i++)
     {
         cout << char(205);
     }
     cout << char(187) << endl;
-    cout << string(40, ' ') << char(186) << "  1- Show All Teachers " << char(186) << endl;
-    cout << string(40, ' ') << char(186) << "  2- Search Teacher    " << char(186) << endl;
-    cout << string(40, ' ') << char(186) << "  3- Add               " << char(186) << endl;
-    cout << string(40, ' ') << char(186) << "  4- Remove            " << char(186) << endl;
-    cout << string(40, ' ') << char(186) << "  5- Edit              " << char(186) << endl;
+    print(40, ' ') << char(186) << "  1- Show All Teachers " << char(186) << endl;
+    print(40, ' ') << char(186) << "  2- Search Teacher    " << char(186) << endl;
+    print(40, ' ') << char(186) << "  3- Add               " << char(186) << endl;
+    print(40, ' ') << char(186) << "  4- Remove            " << char(186) << endl;
+    print(40, ' ') << char(186) << "  5- Edit              " << char(186) << endl;
 
     setcolor(12);
-    cout << string(40, ' ') << char(186) << "  6- Return            " << char(186) << endl;
-    cout << string(40, ' ') << char(200);
+    print(40, ' ') << char(186) << "  6- Return            " << char(186) << endl;
+    print(40, ' ') << char(200);
     for (int i = 0; i < 23; i++)
     {
         cout << char(205);
@@ -85,21 +81,22 @@ void ShowAllTeacher()
         if (!exist)
         {
             setcolor(2);
-            print(70, ' ') << "All Teachers\n"; // Last edit
-            print(66, ' ');
-            print(20, '-') << "\n\n";
-            print(35, ' ') << "ID"
-                           << "\t\t\tName"
-                           << "\t\t   password"
+            print_logo("Show All Teachers", 50);
+            print(25, ' ') << "ID"
+                           << "\t\t\t Name"
+                           << "\t\t\tpassword"
                            << "\t\t\tage"
                            << "\t\tCourse\n";
-            print(33, ' ');
-            print(100, '-') << "\n";
+            print(25, ' ');
+            print(89, '-') << "\n";
             // Last edit
             exist = true;
         }
+        int szofStr = 0, szofPass = 0;
+        for(int i = 0 ; i < 20 ; i++)       szofStr += (T.name[i] != '\0'); 
+        for(int i = 0 ; i < 20 ; i++)       szofPass += (T.password[i] != '\0'); 
         setcolor(6);
-        print(35, ' ') << T.id << "\t\t\t" << T.name << "\t\t\t" << T.password << "\t\t\t" << T.age << "\t\t" << T.course.c_Name << "\n";
+        print(25, ' ') << T.id << "\t\t\t" << T.name << "\t\t\t" << string(szofStr - 3, ' ')  << T.password << "\t\t\t" << string(szofPass + 6, ' ') << T.age << "\t\t    " << T.course.c_Name << "\n";
         inFile.read((char *)&T, sizeof(T));
     }
     if (!exist)
@@ -117,7 +114,7 @@ void SearchTeacher()
 {
     int tea_id;
     setcolor(2);
-    print(15, '\n');
+    print_logo("Search for Teacher");
     print(25, ' ') << "Enter teacher's id to search for : ";
     setcolor(6);
     cin >> tea_id;
@@ -182,9 +179,9 @@ void Add_Teacher()
         cout << "\aFile cannot be oppened :)\n";
         return;
     }
+    print_logo("Add Teacher");
     Teacher T;
     setcolor(2);
-    print(15, '\n');
     print(35, ' ') << "Enter Teacher's Name : ";
     setcolor(6);
     cin.ignore();
@@ -219,9 +216,9 @@ void Add_Teacher()
 
 void Remove_Teacher()
 {
+    print_logo("Remove Teacher");
     int tea_id;
     setcolor(2);
-    print(15, '\n');
     print(35, ' ') << "Enter Teacher's ID to Delete: ";
     setcolor(6);
     cin >> tea_id;
@@ -317,10 +314,9 @@ void Edit_Teacher()
         setcolor(12);
         return void(cout << "\aFile cannot be oppend :)");
     }
-
+    print_logo("Edit Teacher");
     setcolor(2);
     int tea_id;
-    print(15, '\n');
 
     print(25, ' ') << "Enter a Teacher's id to edit : ";
     setcolor(6);
@@ -454,24 +450,24 @@ void Edit_Teacher()
 void Print_Ctrl_Stu()
 {
     setcolor(2);
-    print(15, '\n');
-    cout << string(40, ' ') << "Admin Page (Contorl Student) : \n\n";
-    cout << string(40, ' ') << string(20, '-') << "\n";
-    cout << string(25, ' ') << "Choose : \n\n";
-    cout << string(40, ' ') << char(201);
+    print(0, '\n');
+    print(40, ' ') << "Admin Page (Contorl Student) : \n\n";
+    print(40, ' ') << string(20, '-') << "\n";
+    print(25, ' ') << "Choose : \n\n";
+    print(40, ' ') << char(201);
     for (int i = 0; i < 23; i++)
     {
         cout << char(205);
     }
     cout << char(187) << endl;
-    cout << string(40, ' ') << char(186) << "  1- Show All Students " << char(186) << endl;
-    cout << string(40, ' ') << char(186) << "  2- Search Student    " << char(186) << endl;
-    cout << string(40, ' ') << char(186) << "  3- Add               " << char(186) << endl;
-    cout << string(40, ' ') << char(186) << "  4- Remove            " << char(186) << endl;
-    cout << string(40, ' ') << char(186) << "  5- Edit              " << char(186) << endl;
+    print(40, ' ') << char(186) << "  1- Show All Students " << char(186) << endl;
+    print(40, ' ') << char(186) << "  2- Search Student    " << char(186) << endl;
+    print(40, ' ') << char(186) << "  3- Add               " << char(186) << endl;
+    print(40, ' ') << char(186) << "  4- Remove            " << char(186) << endl;
+    print(40, ' ') << char(186) << "  5- Edit              " << char(186) << endl;
     setcolor(12);
-    cout << string(40, ' ') << char(186) << "  6- Return            " << char(186) << endl;
-    cout << string(40, ' ') << char(200);
+    print(40, ' ') << char(186) << "  6- Return            " << char(186) << endl;
+    print(40, ' ') << char(200);
     for (int i = 0; i < 23; i++)
     {
         cout << char(205);
@@ -489,7 +485,7 @@ void ShowAllStudent()
     setcolor(12);
     if (!file.is_open())
     {
-        print(15, '\n');
+        print(0, '\n');
         print(25, ' ') << "\aError here ... There is no Student!, Please Read the Readme.txt file and try again\n";
         press_any();
         cout << "\n";
@@ -500,7 +496,7 @@ void ShowAllStudent()
     else
     {
         setcolor(2);
-        print(15, '\n');
+        print(0, '\n');
         print(70, ' ') << "All Students\n"; // Last edit
         print(66, ' ');
         print(20, '-') << "\n\n";
@@ -536,7 +532,7 @@ void SearchStudent()
 {
     setcolor(2);
     int stu_id;
-    print(15, '\n');
+    print(0, '\n');
     print(35, ' ') << "Enter the ID of the student to search for: ";
     setcolor(6);
     cin >> stu_id;
@@ -589,7 +585,7 @@ void Add_Student()
     char ch;
     do
     {
-        print(15, '\n');
+        print(0, '\n');
         setcolor(2);
         print(35, ' ') << "Enter student's Name: ";
         setcolor(6);
@@ -728,7 +724,7 @@ void Edit_Student()
     }
     int stu_id;
     setcolor(2);
-    print(15, '\n');
+    print(0, '\n');
     print(35, ' ') << "Enter the ID of the student to Edit: ";
     setcolor(6);
     cin >> stu_id;
@@ -806,20 +802,20 @@ void Ch_Admin()
 {
 
     int Reg_sign;
-    print(15, '\n');
+    print(0, '\n');
     setcolor(2);
-    cout << string(25, ' ') << "Choose : \n\n";
-    cout << string(40, ' ') << char(201);
+    print(25, ' ') << "Choose : \n\n";
+    print(40, ' ') << char(201);
     for (int i = 0; i < 18; i++)
     {
         cout << char(205);
     }
     cout << char(187) << endl;
 
-    cout << string(40, ' ') << char(186) << "  1- Sign in      " << char(186) << endl;
+    print(40, ' ') << char(186) << "  1- Sign in      " << char(186) << endl;
     setcolor(12);
-    cout << string(40, ' ') << char(186) << "  2- Return Back  " << char(186) << endl;
-    cout << string(40, ' ') << char(200);
+    print(40, ' ') << char(186) << "  2- Return Back  " << char(186) << endl;
+    print(40, ' ') << char(200);
     for (int i = 0; i < 18; i++)
     {
         cout << char(205);
@@ -827,7 +823,8 @@ void Ch_Admin()
     cout << char(188) << endl;
 
     setcolor(2);
-    print(25, ' ') << "Choise : ";
+    cout << "\n\n";
+    print(20, ' ') << "Choice : ";
     setcolor(6);
     cin >> Reg_sign;
     cout << "\n"
@@ -839,11 +836,9 @@ void Ch_Admin()
         bool found = 0;
         int id;
         char pass[10];
-        print(15, '\n');
         setcolor(2);
-        cout << string(40, ' ') << "Admin Page : \n\n";
-        cout << string(40, ' ') << string(20, '-') << "\n";
-        cout << string(25, ' ') << "Enter: \n\n";
+        print_logo("Admin Login Page", 40);
+        print(25, ' ') << "Enter: \n\n";
         print(35, ' ') << "ID: ";
         setcolor(6);
         cin >> id;
@@ -851,8 +846,8 @@ void Ch_Admin()
         print(35, ' ') << "Password: ";
         setcolor(6);
         set_Password(pass);
+        
         Directing();
-
         // 1 TODO: Checking Valid ID and Password for admin
         found = 1;
         if (found)
@@ -864,37 +859,42 @@ void Ch_Admin()
                 Print_Admin_Menu();
                 setcolor(6);
                 cin >> Admin_choice;
-                Directing();
                 if (Admin_choice == 1)
                 {
+                    Directing();
                     // Control Teacher
                     int Ad_Teac_choice;
                     do
-                    {
-
+                    {    
+                        
                         Print_Ctrl_Tec();
-                        print(25, ' ') << "Choice : ";
+                        print(15, ' ') << "Choice : ";
                         setcolor(6);
                         cin >> Ad_Teac_choice;
-                        Directing();
+                        
                         if (Ad_Teac_choice == 1)
                         {
+                            Directing();
                             ShowAllTeacher();
                         }
                         else if (Ad_Teac_choice == 2)
                         {
+                            Directing();
                             SearchTeacher();
                         }
                         else if (Ad_Teac_choice == 3)
                         {
+                            Directing();
                             Add_Teacher();
                         }
                         else if (Ad_Teac_choice == 4)
                         {
+                            Directing();
                             Remove_Teacher();
                         }
                         else if (Ad_Teac_choice == 5)
                         {
+                            Directing();
                             Edit_Teacher();
                         }
                         else if (Ad_Teac_choice >= 6)
@@ -906,35 +906,40 @@ void Ch_Admin()
                 }
                 else if (Admin_choice == 2)
                 {
+                    Directing();
                     // Control Student
                     int Ad_Stud_choice;
                     do
                     {
 
                         Print_Ctrl_Stu();
-
                         print(25, ' ') << "Choice : ";
                         setcolor(6);
                         cin >> Ad_Stud_choice;
-                        Directing();
+                        
                         if (Ad_Stud_choice == 1)
                         {
+                            Directing();
                             ShowAllStudent();
                         }
                         else if (Ad_Stud_choice == 2)
                         {
+                            Directing();
                             SearchStudent();
                         }
                         else if (Ad_Stud_choice == 3)
                         {
+                            Directing();
                             Add_Student();
                         }
                         else if (Ad_Stud_choice == 4)
                         {
+                            Directing();
                             Remove_Student();
                         }
                         else if (Ad_Stud_choice == 5)
                         {
+                            Directing();
                             Edit_Student();
                         }
                         else if (Ad_Stud_choice >= 6)
