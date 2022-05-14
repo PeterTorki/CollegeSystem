@@ -253,13 +253,21 @@ void Remove_Teacher()
     outFile.close();
     remove("Teachers.txt");
     rename("TeacherCopy.txt", "Teachers.txt");
+    
     if (exist)
     {
+        setcolor(1);
+        Beep(500, 500);
+        cout << "\n";
+        print(25, ' ') << "\aRemoved Successfully :) \n";
+
         ifstream StudentFile("Student.txt", ios::in);
         ofstream Temp("Temp.txt", ios::out);
         Student s1;
         if (!StudentFile.is_open())
         {
+            Temp.close();
+            remove("Temp.txt");
             return;
         }
         StudentFile.read((char *)&s1, sizeof(s1));
@@ -287,13 +295,11 @@ void Remove_Teacher()
         Temp.close();
         remove("Student.txt");
         rename("Temp.txt", "Student.txt");
-        setcolor(1);
-        Beep(500, 500);
-        cout << "\n";
-        print(25, ' ') << "\aRemoved Successfully :) \n";
+        
     }
     else
     {
+        Beep(500, 500);
         cout << "\n";
         print(25, ' ') << "\aTeacher not found, Please Try again! \n";
         press_any();
@@ -433,16 +439,16 @@ void Edit_Teacher()
         press_any();
         cout << "\n";
     }
-    /* debug */
-    inFile.open("Teachers.txt", ios::in | ios::out);
-    inFile.read((char *)&T, sizeof(T));
-    cout << "Debugging\n";
-    while (inFile) {
-        print(35, ' ') << T.id << "\t\t" << T.name << "\t\t" << T.age << "\t\t" << T.course.c_Name << "\n";
-        inFile.read((char *)&T, sizeof(T));
-    }
-    press_any();
-    /* dbug */
+    // /* debug */
+    // inFile.open("Teachers.txt", ios::in | ios::out);
+    // inFile.read((char *)&T, sizeof(T));
+    // cout << "Debugging\n";
+    // while (inFile) {
+    //     print(35, ' ') << T.id << "\t\t" << T.name << "\t\t" << T.age << "\t\t" << T.course.c_Name << "\n";
+    //     inFile.read((char *)&T, sizeof(T));
+    // }
+    // press_any();
+    // /* dbug */
     return Returning();
 }
 
@@ -450,9 +456,7 @@ void Edit_Teacher()
 void Print_Ctrl_Stu()
 {
     setcolor(2);
-    print(0, '\n');
-    print(40, ' ') << "Admin Page (Contorl Student) : \n\n";
-    print(40, ' ') << string(20, '-') << "\n";
+    print_logo("Student Page");
     print(25, ' ') << "Choose : \n\n";
     print(40, ' ') << char(201);
     for (int i = 0; i < 23; i++)
@@ -496,10 +500,7 @@ void ShowAllStudent()
     else
     {
         setcolor(2);
-        print(0, '\n');
-        print(70, ' ') << "All Students\n"; // Last edit
-        print(66, ' ');
-        print(20, '-') << "\n\n";
+        print_logo("Show All Students", 50);
         bool printed = 1;
         file.read((char *)&s1, sizeof(s1));
         while (!file.eof())
@@ -530,9 +531,11 @@ void ShowAllStudent()
 
 void SearchStudent()
 {
+    
     setcolor(2);
+    print_logo("Search for Student");
     int stu_id;
-    print(0, '\n');
+    
     print(35, ' ') << "Enter the ID of the student to search for: ";
     setcolor(6);
     cin >> stu_id;
@@ -544,6 +547,8 @@ void SearchStudent()
     {
         setcolor(6);
         print(25, ' ') << "\aError here ... There is no Student to Search for!, Please Read the Readme.txt file and try again\n";
+        press_any();
+        return Returning();
     }
     bool exist = 0;
     // Read first to ignore last deplicated objects
@@ -581,11 +586,11 @@ void Add_Student()
 {
     Student s1;
     ofstream file1;
+    print_logo("Add Student");
     file1.open("Student.txt", ios::out | ios::app);
     char ch;
     do
     {
-        print(0, '\n');
         setcolor(2);
         print(35, ' ') << "Enter student's Name: ";
         setcolor(6);
@@ -628,6 +633,7 @@ void Add_Student()
 
 void Remove_Student()
 {
+    print_logo("Remove Student");
     int stu_id;
     setcolor(2);
     print(35, ' ') << "Enter the ID of the student to Delete: ";
@@ -720,11 +726,14 @@ void Edit_Student()
     if (!inFile.is_open())
     {
         setcolor(12);
-        return void(cout << "\aFile cannot be oppend :)");
+        print(25, ' ') << "\aError here ... There is no Student!, Please Read the Readme.txt file and try again\n";
+        press_any();
+        Returning();
+        return;
     }
     int stu_id;
     setcolor(2);
-    print(0, '\n');
+    print_logo("Edit Teacher");
     print(35, ' ') << "Enter the ID of the student to Edit: ";
     setcolor(6);
     cin >> stu_id;
@@ -950,8 +959,10 @@ void Ch_Admin()
 
                     } while (1);
                 }
-                else if (Admin_choice >= 3)
+                else if (Admin_choice >= 3){
+                    Returning();
                     break;
+                }
             } while (1);
         }
     }

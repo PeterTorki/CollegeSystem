@@ -9,10 +9,8 @@ using namespace std;
 void Student_profile_menu()
 {
 
-    print(0, '\n');
     setcolor(1);
-    print(40, ' ') << "Student Page : \n\n";
-    print(40, ' ') << string(20, '-') << "\n";
+    print_logo("Student Page");
     setcolor(2);
     cout << string(25, ' ') << "Choose : \n\n";
     cout << string(40, ' ') << char(201);
@@ -42,10 +40,8 @@ void Ch_Student()
 {
 
     int Reg_sign;
-    print(0, '\n');
     setcolor(1);
-    print(40, ' ') << "Student Page : \n\n";
-    print(40, ' ') << string(20, '-') << "\n";
+    print_logo("Student Page");
     setcolor(2);
     cout << string(25, ' ') << "Choose : \n\n";
     cout << string(40, ' ') << char(201);
@@ -85,9 +81,8 @@ void Ch_Student()
 
         fileRegister.open("Student.txt", ios::out | ios::app);
         setcolor(1);
-        print(40, ' ') << "Student Register Page : \n\n";
 
-        print(40, ' ') << string(20, '-') << "\n";
+        print_logo("Student Register Page ");
         setcolor(2);
         print(35, ' ') << "Name: ";
         setcolor(6);
@@ -179,9 +174,8 @@ void Ch_Student()
         {
             setcolor(2);
             // Show my information
-            print(0, '\n');
-            print(40, ' ') << "Student Profile Page : \n\n";
-            print(40, ' ') << string(20, '-') << "\n";
+            
+            print_logo("Student Profile Page ");
             print(35, ' ') << "Name: ";
             setcolor(6);
             cout << thisStudent.name << endl;
@@ -208,9 +202,7 @@ void Ch_Student()
                 // List Courses
                 setcolor(2);
                 int course_ch;
-                print(0, '\n');
-                print(40, ' ') << "Student Page : \n\n";
-                print(40, ' ') << string(20, '-') << "\n";
+                print_logo("Student Page");
                 cout << string(25, ' ') << "Choose a course : \n\n";
                 int courseNum = 0;
                 Teacher t1;
