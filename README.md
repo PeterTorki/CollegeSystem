@@ -5,6 +5,7 @@
 <p align="center"> Version: 2.1<br>|28 - 4 - 2022|</p>
 
 --------------------------------------------------------------------------------------------------------------------------------
+0) TODO: Download the whole files
 
 1) TODO: Program must be runned at Windows OS
 
